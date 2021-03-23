@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>Calcul doses fin de journée</title>
+  </head>
+  <body>
+    <h1>Calcul doses fin de journée</h1>
+    
+<form>
+  <div class="row mb-3">
+    <label for="dosesPrepared" class="col-form-label col-8">
+    Doses préparées d'avance
+    </label>
+    <div class="col-4">
+      <input type="number" min="0" class="form-control input-sm" id="dosesPrepared">
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <label for="dosesInUse" class="col-form-label col-8">
+    Doses en cours d'utilisation par les infirmières
+    </label>
+    <div class="col-4">
+      <input type="number" min="0" class="form-control" id="dosesInUse">
+    </div>
+  </div>
+  
+  <hr/>
+  
+  <div class="row mb-3">
+    <label for="dosesTotal" class="col-form-label col-8">Total</label>
+    <div class="col-4">
+      <input type="number" readonly class="form-control" id="dosesTotal" value="0" >
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <label for="patientsReady" class="col-form-label col-8">
+    Patients en chemin entre le check-in et l'injection en cabine de vaccination
+    </label>
+    <input type="number" min="0" class="form-control" id="patientsReady">
+  </div>
+  
+  <div class="row mb-3">
+    <label for="patientsBooked" class="col-form-label col-8">
+    Patients restants qui ont pris un rendez-vous
+    </label>
+    <input type="number" min="0" class="form-control" id="patientsBooked">
+    <div>
+    Attention, retirer de l'agenda toutes les personnes avec statut B  qui ne se sont pas présentées
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <label for="patientsTotal" class="col-form-label col-8">Total</label>
+    <input type="number" readonly class="form-control-plaintext" id="patientsTotal" value="0" >
+  </div>
+  
+  <div class="row mb-3">
+    <label for="dosesPerBottle" class="col-form-label col-8">
+    Doses par flapule
+    </label>
+    <input type="number" min="0" class="form-control" id="dosesPerBottle">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Calculer</button>
+  
+  <div class="row mb-3">
+    <label for="bottlesToOpen" class="col-form-label col-8">Flapules à ouvrir</label>
+    <input type="number" readonly class="form-control" id="bottlesToOpen" value="0" >
+  </div>
+  
+  <div class="row mb-3">
+    <label for="patientsToContact" class="form-label">Patients à contacter</label>
+    <input type="number" readonly class="form-control" id="patientsToContact" value="0" >
+  </div>
+  
+
+</form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>
