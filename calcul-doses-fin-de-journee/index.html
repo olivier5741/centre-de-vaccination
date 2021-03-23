@@ -17,7 +17,7 @@
     <div class="container-md" style="width: 600px">
       <h1>Calcul doses fin de journée</h1>
 
-      <form>
+      <form onsubmit="return false;">
         <div class="row mb-3">
           <label for="dosesPrepared" class="col-form-label col-8">
             Doses préparées d'avance
@@ -99,11 +99,14 @@
               class="form-control"
               id="dosesPerBottle"
             />
-          </div>
+          </div>          
+          <p class="text-muted">
+            11 pour Astra, 6 pour Pfizer
+          </p>
         </div>
 
         <div class="d-grid gap-2 mb-3">
-          <button type="submit" class="btn btn-primary">Calculer</button>
+          <button class="btn btn-primary" onclick="compute()">Calculer</button>
         </div>
       
         <div class="row mb-3">
@@ -113,7 +116,7 @@
 
         <div class="row mb-3">
           <label class="col-8 text-end fw-bold">Patients à contacter</label>
-          <p id="bottlesToOpen" class="col-4 text-end fw-bold">0</p>
+          <p id="patientsToContact" class="col-4 text-end fw-bold">0</p>
         </div>
       </form>
     </div>
@@ -125,7 +128,38 @@
     ></script>
 
     <script>
-      
+
+      $()
+      function compute(){
+
+        const dosesPrepared = parseInt(document.getElementById("dosesPrepared").value || 0)
+        const dosesInUse = parseInt(document.getElementById("dosesInUse").value || 0)
+
+        const dosesTotal = dosesPrepared + dosesInUse
+        document.getElementById("dosesTotal").innerHTML = dosesTotal
+
+        const patientsReady = parseInt(document.getElementById("patientsReady").value || 0)
+        const patientsBooked = parseInt(document.getElementById("patientsBooked").value || 0)
+
+        const patientsTotal = patientsReady + patientsBooked
+        document.getElementById("patientsTotal").innerHTML = patientsTotal
+        
+        const dosesPerBottle = parseInt(document.getElementById("dosesPerBottle").value || 0)
+
+        let bottlesToOpen = 0
+
+        if(patientsTotal > dosesTotal){
+          bottlesToOpen = Math.floor((patientsTotal-dosesTotal)/dosesPerBottle) + 1
+        }
+
+        patientsToContact = (bottlesToOpen * dosesPerBottle) + dosesTotal - patientsTotal
+
+        document.getElementById("bottlesToOpen").innerHTML = bottlesToOpen
+        document.getElementById("patientsToContact").innerHTML = patientsToContact
+        
+
+      }
+
     </script>
   </body>
 </html>
