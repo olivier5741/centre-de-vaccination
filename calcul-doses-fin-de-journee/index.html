@@ -129,7 +129,6 @@
 
     <script>
 
-      $()
       function compute(){
 
         const dosesPrepared = parseInt(document.getElementById("dosesPrepared").value || 0)
@@ -147,10 +146,11 @@
         const dosesPerBottle = parseInt(document.getElementById("dosesPerBottle").value || 0)
 
         let bottlesToOpen = 0
-
+        
         if(patientsTotal > dosesTotal){
-          bottlesToOpen = Math.floor((patientsTotal-dosesTotal)/dosesPerBottle) + 1
-        }
+          const diff = patientsTotal-dosesTotal-1
+          bottlesToOpen = Math.floor(diff/dosesPerBottle) + 1
+        }6
 
         patientsToContact = (bottlesToOpen * dosesPerBottle) + dosesTotal - patientsTotal
 
