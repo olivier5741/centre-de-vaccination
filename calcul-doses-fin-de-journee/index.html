@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <link rel="icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.json">
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,9 +17,33 @@
     <title>Calcul doses fin de journée</title>
   </head>
   <body>
-    <div class="container-md" style="width: 600px">
+    <div class="container-md" style="max-width: 600px">
+
       <h1>Calcul doses fin de journée</h1>
 
+      <p>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Lisez-moi
+      </button>
+      </p>
+
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <p>
+            Pour calculer le nombre de  doses à redistribuer fin de journée nous vous proposons de procéder comme suit: 
+          </p>
+    
+          <ul>
+            <li>arrêter quelques instants le check-in une heure avant la fin de la période de vaccination</li>
+            <li>compter le nombre de personnes en chemin jusqu'à la vaccination</li>
+            <li>compter le nombre de doses dans les mains des vaccinateurs et le nombre de doses prêtes en pharmacie</li>
+            <li>consulter les statistiques du jour après avoir  retiré de l'agenda du jour les patients qui ne se sont pas présentés! (les mettre en NO SHOW)</li>
+            <li>mettre le nombre de doses  par flacon de vaccin</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>
       <form onsubmit="return false;">
         <div class="row mb-3">
           <label for="dosesPrepared" class="col-form-label col-8">
@@ -119,6 +146,7 @@
           <p id="patientsToContact" class="col-4 text-end fw-bold">0</p>
         </div>
       </form>
+    </p>
     </div>
 
     <script
@@ -128,6 +156,12 @@
     ></script>
 
     <script>
+
+      if ("serviceWorker" in navigator) {
+        // register service worker
+        navigator.serviceWorker.register("service-worker.js");
+      }
+
 
       function compute(){
 
