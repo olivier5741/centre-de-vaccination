@@ -149,51 +149,18 @@
     </p>
     </div>
 
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container">
+        <p class="navbar-text text-muted">Contribute on <a href="https://github.com/olivier5741/centre-de-vaccination">github</a></p>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
       crossorigin="anonymous"
     ></script>
 
-    <script>
-
-      if ("serviceWorker" in navigator) {
-        // register service worker
-        navigator.serviceWorker.register("service-worker.js");
-      }
-
-
-      function compute(){
-
-        const dosesPrepared = parseInt(document.getElementById("dosesPrepared").value || 0)
-        const dosesInUse = parseInt(document.getElementById("dosesInUse").value || 0)
-
-        const dosesTotal = dosesPrepared + dosesInUse
-        document.getElementById("dosesTotal").innerHTML = dosesTotal
-
-        const patientsReady = parseInt(document.getElementById("patientsReady").value || 0)
-        const patientsBooked = parseInt(document.getElementById("patientsBooked").value || 0)
-
-        const patientsTotal = patientsReady + patientsBooked
-        document.getElementById("patientsTotal").innerHTML = patientsTotal
-        
-        const dosesPerBottle = parseInt(document.getElementById("dosesPerBottle").value || 0)
-
-        let bottlesToOpen = 0
-        
-        if(patientsTotal > dosesTotal){
-          const diff = patientsTotal-dosesTotal-1
-          bottlesToOpen = Math.floor(diff/dosesPerBottle) + 1
-        }6
-
-        patientsToContact = (bottlesToOpen * dosesPerBottle) + dosesTotal - patientsTotal
-
-        document.getElementById("bottlesToOpen").innerHTML = bottlesToOpen
-        document.getElementById("patientsToContact").innerHTML = patientsToContact
-        
-
-      }
-
-    </script>
+    <script src="app.js"></script> 
   </body>
 </html>
